@@ -19,8 +19,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -36,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
     , @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.id = :id")
     , @NamedQuery(name = "Empresa.findByRazonSocial", query = "SELECT e FROM Empresa e WHERE e.razonSocial = :razonSocial")
+    , @NamedQuery(name = "Empresa.findByHashEmpresa", query = "SELECT e FROM Empresa e WHERE e.hashEmpresa = :hashEmpresa")
     , @NamedQuery(name = "Empresa.findByDireccion", query = "SELECT e FROM Empresa e WHERE e.direccion = :direccion")
     , @NamedQuery(name = "Empresa.findBySitioWeb", query = "SELECT e FROM Empresa e WHERE e.sitioWeb = :sitioWeb")})
 public class Empresa implements Serializable, Entidad {
@@ -48,12 +51,18 @@ public class Empresa implements Serializable, Entidad {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 150)
+    @Size(min = 2, max = 80, message = "Campo razón social vacío, mínimo 2 caracteres")
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Este campo no permite números ni caracteres especiales")
     @Column(name = "razon_social")
     private String razonSocial;
-    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
+    @Column(name = "hashEmpresa")
+    private String hashEmpresa;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 8, max = 120, message = "Campo dirección vacío, mínimo 2 caracteres")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Este campo no permite caracteres especiales")
     @Column(name = "direccion")
     private String direccion;
     @Size(max = 200)
@@ -67,7 +76,7 @@ public class Empresa implements Serializable, Entidad {
     @ManyToOne(optional = false)
     private SectorEconomico sectorEconomicoId;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Usuario usuarioId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresaId")
     private List<ContactoEmpresa> contactoEmpresaList;
@@ -79,10 +88,11 @@ public class Empresa implements Serializable, Entidad {
         this.id = id;
     }
 
-    public Empresa(Integer id, String razonSocial, String direccion) {
+    public Empresa(Integer id, String hashEmpresa, String razonSocial, String direccion) {
         this.id = id;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
+        this.hashEmpresa = hashEmpresa;
     }
 
     @Override
@@ -108,6 +118,14 @@ public class Empresa implements Serializable, Entidad {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getHashEmpresa() {
+        return hashEmpresa;
+    }
+
+    public void setHashEmpresa(String hashEmpresa) {
+        this.hashEmpresa = hashEmpresa;
     }
 
     public String getSitioWeb() {
@@ -185,5 +203,5 @@ public class Empresa implements Serializable, Entidad {
     public String toString() {
         return "proyectompc.entidades.Empresa[ id=" + id + " ]";
     }
-    
+
 }

@@ -76,7 +76,7 @@ public class RegistrarCliente{
     
     public void enviarMensaje(String[] datos) {
         String titulo = "Usuario registrado con éxito";
-        String contenido = "<div>" + datos[1] + " " + datos[2] + " le damos la bienvenida a <b style=\"color:#41b883\">MPC</b>.<hr />Para poder ingresar al aplicativo es necesario realizar la activación de su cuenta a través del siguiente enlace.<br /><br /><a href=\"http://localhost:8080/sistemampc/activar.mpc?huk=" + datos[3] + "\" target=\"_blank\">Activar cuenta</a></div>";
+        String contenido = "<div>" + datos[1] + " " + datos[2] + " le damos la bienvenida a <b style=\"color:#41b883\">MPC</b>.<hr />Para poder ingresar al aplicativo es necesario realizar la activación de su cuenta a través del siguiente enlace.<br /><br /><a href=\"http://localhost:8080/proyectompc/activar.mpc?huk=" + datos[3] + "\" target=\"_blank\">Activar cuenta</a></div>";
         Correo.enviarCorreoHtml("Usuario registrado con éxito", PlantillaCliente.getContenido(titulo, contenido), datos[0]);
     }
     public void enviarMensajeNuevoUsuario(String[] datos) {

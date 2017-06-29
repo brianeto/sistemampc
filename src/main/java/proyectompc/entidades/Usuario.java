@@ -83,8 +83,8 @@ public class Usuario implements Serializable, Entidad {
     private Cliente cliente;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioId")
     private Empleado empleado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
-    private List<Empresa> empresaList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuarioId")
+    private Empresa empresa;
 
     public Usuario() {
     }
@@ -181,13 +181,12 @@ public class Usuario implements Serializable, Entidad {
         this.empleado = empleado;
     }
 
-    @XmlTransient
-    public List<Empresa> getEmpresaList() {
-        return empresaList;
+    public Empresa getEmpresaList() {
+        return empresa;
     }
 
-    public void setEmpresaList(List<Empresa> empresaList) {
-        this.empresaList = empresaList;
+    public void setEmpresaList(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     @Override

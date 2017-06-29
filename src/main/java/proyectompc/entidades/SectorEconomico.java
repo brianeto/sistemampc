@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,8 +44,9 @@ public class SectorEconomico implements Serializable, Entidad {
     private Integer id;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "nombre")
-    private int nombre;
+    private String nombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sectorEconomicoId")
     private List<Empresa> empresaList;
 
@@ -55,7 +57,7 @@ public class SectorEconomico implements Serializable, Entidad {
         this.id = id;
     }
 
-    public SectorEconomico(Integer id, int nombre) {
+    public SectorEconomico(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
@@ -69,11 +71,11 @@ public class SectorEconomico implements Serializable, Entidad {
         this.id = id;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
