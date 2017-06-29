@@ -36,27 +36,10 @@
                                 <input type="number" class="form-control" id="cedula" placeholder="Cedula"/><br/>
                                 <input type="password" class="form-control" id="clave" placeholder="Clave"/><br/>
                                 <button type="button" class="btn btn-danger submit-btn form_submit">Ingresar</button>                              
-
                             </div>
-
                         </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li id="myBtn"><a href="#HOME"><b>Ingresar</b></a></li>
-                                <li><a href="#SERVICE">Nosotros</a></li>
-                                <li><a href="#ABOUT">Contacto</a></li>
-                                <li><a href="usuarios/nuevocliente.mpc">Registrate</a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container -->
+                     </div>
                 </nav> 
-                
-                
-                
-                
-
               
                 <div class="container">
                     <div class="row">
@@ -90,7 +73,7 @@
                             <b:selectOneMenu id="anio"
                                              style="flex:1 1 auto"
                                              value="#{registarClienteControlador.anio}">
-                                <f:selectItem itemValue="" itemLabel="Año"/>
+                                <f:selectItem itemValue="" itemLabel="Año *"/>
                                 <f:selectItems value="#{fechaControlador.anios}" var="anio"
                                                itemLabel="#{anio}" itemValue="#{anio}"
                                                rendered="true"/>
@@ -99,7 +82,7 @@
                                              style="flex:1 1 auto"
                                              value="#{registarClienteControlador.mes}"
                                              required="true">
-                                <f:selectItem itemValue="" itemLabel="Mes"/>
+                                <f:selectItem itemValue="" itemLabel="Mes *"/>
                                 <f:selectItems value="#{fechaControlador.meses}" var="mes"
                                                itemLabel="#{mes[1]}" itemValue="#{mes[0]}"/>
                             </b:selectOneMenu>
@@ -107,7 +90,7 @@
                                              style="flex:1 1 auto"
                                              value="#{registarClienteControlador.dia}"
                                              required="true">
-                                <f:selectItem itemValue="" itemLabel="Día"/>
+                                <f:selectItem itemValue="" itemLabel="Día *"/>
                                 <f:selectItems value="#{fechaControlador.dias}" var="dia" itemValue="#{dia}"  itemLabel="#{dia}"/>
                             </b:selectOneMenu>
                         </div>
@@ -146,30 +129,35 @@
                     <b:formGroup>
                         <b:inputText id="respuesta"
                                      label="Respuesta Secreta"
+                                     placeholder="Respuesta Secreta"
                                      value="#{registarClienteControlador.usuario.respuestaPreguntaSecreta}"/>
                         <b:message for="respuesta"/>
                     </b:formGroup>
                     <b:formGroup>
                         <b:inputText id="nombre"
-                                     label="Nombre"
+                                     label="Nombre *"
+                                     placeholder="Nombre"
                                      value="#{registarClienteControlador.cliente.nombres}"/>
                         <b:message for="nombre"/>
                     </b:formGroup>
                     <b:formGroup>
                         <b:inputText id="ncedula"
-                                     label="Número de cédula"
+                                     label="Número de cédula *"
+                                     placeholder="Cédula"
                                      value="#{registarClienteControlador.cliente.numeroCedula}"/>
                         <b:message for="ncedula"/>
                     </b:formGroup>
                     <b:formGroup>
                         <b:inputText id="apellido"
-                                     label="apellido"
+                                     placeholder="apellidos"
+                                     label="apellido *"
                                      value="#{registarClienteControlador.cliente.apellidos}"/>
                         <b:message for="apellido"/>
                     </b:formGroup>
                     <b:formGroup>
                         <b:inputText id="correo"
-                                     label="Correo electrónico"
+                                     label="Correo electrónico *"
+                                     placeholder="correo eléctronico"
                                      value="#{registarClienteControlador.cliente.correoElectronico}"/>
                         <b:message for="correo"/>
                     </b:formGroup>
