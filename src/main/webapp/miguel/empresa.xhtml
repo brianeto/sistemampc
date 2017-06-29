@@ -8,81 +8,60 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <b:panel>
-                <b:form horizontal="true">
-                    <b:messages />
-                    <b:formGroup>
-                        <b:inputText id="usuario"
-                                     label="Usuario *"
-                                     value="#{registrarEmpresaControlador.usuario.usuario}"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:inputSecret id="clave"
-                                       label="Contarseña"
-                                       value="#{registrarEmpresaControlador.usuario.clave}"/>
-                        <b:message for="clave"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:inputSecret id="cclave"
-                                       label="Confirmar contarseña"
-                                       value="#{registrarEmpresaControlador.repetirClave}">
-                            <f:validator validatorId="passwordValidator"/>
-                            <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
-                        </b:inputSecret>
-                        <b:message for="cclave"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:selectOneMenu value="#{registrarEmpresaControlador.usuario.preguntaSecretaId}"
-                                         required="true"
-                                         label="Pregunta secreta"
-                                         requiredMessage="requerido">
-                            <f:selectItem itemLabel="Seleccionar" itemValue=""/>
-                            <f:selectItems value="#{preguntaSecretaControlador.PreguntaSecretas()}" 
-                                           var="pss" 
-                                           itemValue="#{pss.id}"
-                                           itemLabel="#{pss.pregunta}"/>
-                        </b:selectOneMenu>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:inputText id="respuesta"
-                                     label="Respuesta *"
-                                     value="#{registrarEmpresaControlador.usuario.respuestaPreguntaSecreta}"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:selectOneMenu value="#{registrarEmpresaControlador.empresa.sectorEconomicoId}"
-                                         required="true"
-                                         label="Sector económico"
-                                         requiredMessage="requerido">
-                            <f:selectItem itemLabel="Seleccionar" itemValue=""/>
-                            <f:selectItems value="#{sectorEconomicoControlador.SectorEconomicos()}" 
-                                           var="sss" 
-                                           itemValue="#{sss.id}"
-                                           itemLabel="#{sss.nombre}"/>
-                        </b:selectOneMenu>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:inputText id="razonSocial"
-                                     label="Razon social *"
-                                     value="#{registrarEmpresaControlador.empresa.razonSocial}"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:inputText id="dirección"
-                                     label="Dirección *"
-                                     value="#{registrarEmpresaControlador.empresa.direccion}"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:inputText id="sitioWeb"
-                                     label="Dirección de sitio web"
-                                     value="#{registrarEmpresaControlador.empresa.sitioWeb}"/>
-                    </b:formGroup>
-                    <b:formGroup>
-                        <b:commandButton value="Registrar" 
-                                         class="btn-success"
-                                         actionListener="#{registrarEmpresaControlador.registrarEmpresa()}"/>
-                    </b:formGroup>
-                </b:form>
-            </b:panel>
+        <b:growl />
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+                <h:form>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <h:outputLabel for="razonSocial"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <h:inputText id="razonSocial"
+                                         value="#{registrarEmpresaControlador.empresa.razonSocial}"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <h:message for="razonSocial"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <h:outputLabel for="direccion"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <h:inputText id="direccion"
+                                         value="#{registrarEmpresaControlador.empresa.direccion}"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <h:message for="direccion"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <h:outputLabel for="sectorEconomico"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <h:selectOneMenu id="sectorEconomico"
+                                             value="#{registrarEmpresaControlador.empresa.sectorEconomicoId}">
+                                <f:selectItem itemLabel="Seleccione un sector económico" itemValue=""/>
+                                <f:selectItems value="#{sectorEconomicoControlador.SectorEconomicos()}" 
+                                               var="sec"
+                                               itemLabel="#{sec.nombre}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-xs-5">
+                            <h:message for="sectorEconomico"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 flex end-xs">
+                            <h:commandButton id="button"
+                                             class="btn btn-primary"
+                                             value="Registrar"/>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
         </div>
     </h:body>
 </html>
