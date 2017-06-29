@@ -56,12 +56,4 @@ public class OrdenControlador implements Serializable, Controlador<Orden>{
         return ordenFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Orden.class)
-    public class OrdenConvertidor extends Convertidor {
-        
-        public OrdenConvertidor(){
-            this.nombreControlador = "ordenControlador";
-        }
-    }
 }

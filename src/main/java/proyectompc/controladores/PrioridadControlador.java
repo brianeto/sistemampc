@@ -56,12 +56,4 @@ public class PrioridadControlador implements Serializable, Controlador<Prioridad
         return prioridadFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Prioridad.class)
-    public class PrioridadConvertidor extends Convertidor {
-        
-        public PrioridadConvertidor(){
-            this.nombreControlador = "prioridadControlador";
-        }
-    }
 }

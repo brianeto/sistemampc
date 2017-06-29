@@ -56,12 +56,4 @@ public class TipoSuministroControlador implements Serializable, Controlador<Tipo
         return tiposuministroFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = TipoSuministro.class)
-    public class TipoSuministroConvertidor extends Convertidor {
-        
-        public TipoSuministroConvertidor(){
-            this.nombreControlador = "tipoSuministroControlador";
-        }
-    }
 }

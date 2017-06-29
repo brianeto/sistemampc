@@ -56,12 +56,4 @@ public class PermisoControlador implements Serializable, Controlador<Permiso>{
         return permisoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Permiso.class)
-    public class PermisoConvertidor extends Convertidor {
-        
-        public PermisoConvertidor(){
-            this.nombreControlador = "permisoControlador";
-        }
-    }
 }

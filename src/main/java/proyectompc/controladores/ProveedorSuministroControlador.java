@@ -56,12 +56,4 @@ public class ProveedorSuministroControlador implements Serializable, Controlador
         return proveedorsuministroFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = ProveedorSuministro.class)
-    public class ProveedorSuministroConvertidor extends Convertidor {
-        
-        public ProveedorSuministroConvertidor(){
-            this.nombreControlador = "proveedorSuministroControlador";
-        }
-    }
 }

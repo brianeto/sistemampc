@@ -56,12 +56,4 @@ public class TelefonoProveedorControlador implements Serializable, Controlador<T
         return telefonoproveedorFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = TelefonoProveedor.class)
-    public class TelefonoProveedorConvertidor extends Convertidor {
-        
-        public TelefonoProveedorConvertidor(){
-            this.nombreControlador = "telefonoProveedorControlador";
-        }
-    }
 }

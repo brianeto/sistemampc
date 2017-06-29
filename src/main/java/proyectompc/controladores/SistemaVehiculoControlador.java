@@ -56,12 +56,4 @@ public class SistemaVehiculoControlador implements Serializable, Controlador<Sis
         return sistemavehiculoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = SistemaVehiculo.class)
-    public class SistemaVehiculoConvertidor extends Convertidor {
-        
-        public SistemaVehiculoConvertidor(){
-            this.nombreControlador = "sistemaVehiculoControlador";
-        }
-    }
 }

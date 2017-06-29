@@ -56,12 +56,4 @@ public class MarcaVehiculoControlador implements Serializable, Controlador<Marca
         return marcavehiculoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = MarcaVehiculo.class)
-    public class MarcaVehiculoConvertidor extends Convertidor {
-        
-        public MarcaVehiculoConvertidor(){
-            this.nombreControlador = "marcaVehiculoControlador";
-        }
-    }
 }

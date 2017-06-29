@@ -56,12 +56,4 @@ public class MantenimientoControlador implements Serializable, Controlador<Mante
         return mantenimientoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Mantenimiento.class)
-    public class MantenimientoConvertidor extends Convertidor {
-        
-        public MantenimientoConvertidor(){
-            this.nombreControlador = "mantenimientoControlador";
-        }
-    }
 }

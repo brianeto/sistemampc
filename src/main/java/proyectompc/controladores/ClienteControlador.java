@@ -56,12 +56,4 @@ public class ClienteControlador implements Serializable, Controlador<Cliente>{
         return clienteFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Cliente.class)
-    public class ClienteConvertidor extends Convertidor {
-        
-        public ClienteConvertidor(){
-            this.nombreControlador = "clienteControlador";
-        }
-    }
 }

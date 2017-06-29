@@ -56,12 +56,4 @@ public class EstadoControlador implements Serializable, Controlador<Estado>{
         return estadoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Estado.class)
-    public class EstadoConvertidor extends Convertidor {
-        
-        public EstadoConvertidor(){
-            this.nombreControlador = "estadoControlador";
-        }
-    }
 }

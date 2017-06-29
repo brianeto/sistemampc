@@ -56,12 +56,4 @@ public class CalificacionEmpleadoControlador implements Serializable, Controlado
         return calificacionempleadoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = CalificacionEmpleado.class)
-    public class CalificacionEmpleadoConvertidor extends Convertidor {
-        
-        public CalificacionEmpleadoConvertidor(){
-            this.nombreControlador = "calificacionEmpleadoControlador";
-        }
-    }
 }

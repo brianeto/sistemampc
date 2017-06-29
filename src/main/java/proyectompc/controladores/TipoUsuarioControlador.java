@@ -56,12 +56,4 @@ public class TipoUsuarioControlador implements Serializable, Controlador<TipoUsu
         return tipousuarioFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = TipoUsuario.class)
-    public class TipoUsuarioConvertidor extends Convertidor {
-        
-        public TipoUsuarioConvertidor(){
-            this.nombreControlador = "tipoUsuarioControlador";
-        }
-    }
 }

@@ -56,12 +56,4 @@ public class RolControlador implements Serializable, Controlador<Rol>{
         return rolFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Rol.class)
-    public class RolConvertidor extends Convertidor {
-        
-        public RolConvertidor(){
-            this.nombreControlador = "rolControlador";
-        }
-    }
 }

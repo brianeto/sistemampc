@@ -56,12 +56,4 @@ public class TipoVehiculoControlador implements Serializable, Controlador<TipoVe
         return tipovehiculoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = TipoVehiculo.class)
-    public class TipoVehiculoConvertidor extends Convertidor {
-        
-        public TipoVehiculoConvertidor(){
-            this.nombreControlador = "tipoVehiculoControlador";
-        }
-    }
 }

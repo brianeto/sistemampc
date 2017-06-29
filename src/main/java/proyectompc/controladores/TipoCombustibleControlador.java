@@ -56,12 +56,4 @@ public class TipoCombustibleControlador implements Serializable, Controlador<Tip
         return tipocombustibleFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = TipoCombustible.class)
-    public class TipoCombustibleConvertidor extends Convertidor {
-        
-        public TipoCombustibleConvertidor(){
-            this.nombreControlador = "tipoCombustibleControlador";
-        }
-    }
 }

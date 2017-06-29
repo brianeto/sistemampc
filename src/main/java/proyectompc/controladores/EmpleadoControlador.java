@@ -56,12 +56,4 @@ public class EmpleadoControlador implements Serializable, Controlador<Empleado>{
         return empleadoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = Empleado.class)
-    public class EmpleadoConvertidor extends Convertidor {
-        
-        public EmpleadoConvertidor(){
-            this.nombreControlador = "empleadoControlador";
-        }
-    }
 }

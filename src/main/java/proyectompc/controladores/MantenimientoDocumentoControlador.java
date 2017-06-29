@@ -56,12 +56,4 @@ public class MantenimientoDocumentoControlador implements Serializable, Controla
         return mantenimientodocumentoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = MantenimientoDocumento.class)
-    public class MantenimientoDocumentoConvertidor extends Convertidor {
-        
-        public MantenimientoDocumentoConvertidor(){
-            this.nombreControlador = "mantenimientoDocumentoControlador";
-        }
-    }
 }

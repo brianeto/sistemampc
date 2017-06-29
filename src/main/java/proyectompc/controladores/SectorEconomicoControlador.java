@@ -56,12 +56,4 @@ public class SectorEconomicoControlador implements Serializable, Controlador<Sec
         return sectoreconomicoFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = SectorEconomico.class)
-    public class SectorEconomicoConvertidor extends Convertidor {
-        
-        public SectorEconomicoConvertidor(){
-            this.nombreControlador = "sectorEconomicoControlador";
-        }
-    }
 }
