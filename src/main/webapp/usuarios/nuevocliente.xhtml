@@ -6,8 +6,71 @@
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Facelet Title</title>
+        <link href="resources/index/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Responsive CSS -->
+        <link href="resources/index/css/responsive.css" rel="stylesheet"/>
+        <link rel="icon" type="image/png" href="resources/index/images/mpcrojo.png" />
     </h:head>
     <h:body>
+                <header id="Inicio" style="background-position: 50% -125px;">
+            <div class="section_overlay">
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><img src="../resources/index/images/mpcrojo.png" alt="" width="140"/></a>
+                        </div>
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <input type="number" class="form-control" id="cedula" placeholder="Cedula"/><br/>
+                                <input type="password" class="form-control" id="clave" placeholder="Clave"/><br/>
+                                <button type="button" class="btn btn-danger submit-btn form_submit">Ingresar</button>                              
+
+                            </div>
+
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li id="myBtn"><a href="#HOME"><b>Ingresar</b></a></li>
+                                <li><a href="#SERVICE">Nosotros</a></li>
+                                <li><a href="#ABOUT">Contacto</a></li>
+                                <li><a href="usuarios/nuevocliente.mpc">Registrate</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container -->
+                </nav> 
+                
+                
+                
+                
+
+              
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="scroll_down">
+                                <a href="#SERVICE"><img src="../resources/index/images/shape.png" alt=""/></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+                
+        </header>
         <div class="col-xs-12 col-sm-6 col-md-6">
             <b:panel>
                 <f:facet name="heading">
