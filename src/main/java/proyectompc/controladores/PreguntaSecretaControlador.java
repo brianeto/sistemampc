@@ -13,8 +13,6 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import proyectompc.core.Controlador;
-import proyectompc.core.Convertidor;
-import javax.faces.convert.FacesConverter;
 import proyectompc.entidades.PreguntaSecreta;
 import proyectompc.facades.PreguntaSecretaFacade;
 
@@ -49,6 +47,7 @@ public class PreguntaSecretaControlador implements Serializable, Controlador<Pre
 
     @Override
     public PreguntaSecreta getEntidad(Integer llavePrimaria) {
+        System.out.println("controlador : " + preguntasecretaFacade.find(llavePrimaria));
         return preguntasecretaFacade.find(llavePrimaria);
     }
     
@@ -56,12 +55,4 @@ public class PreguntaSecretaControlador implements Serializable, Controlador<Pre
         return preguntasecretaFacade.findAll();
     }
     
-
-    @FacesConverter(forClass = PreguntaSecreta.class)
-    public class PreguntaSecretaConvertidor extends Convertidor {
-        
-        public PreguntaSecretaConvertidor(){
-            this.nombreControlador = "preguntaSecretaControlador";
-        }
-    }
 }

@@ -21,13 +21,13 @@ public class Convertidor implements Converter{
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         try {
-            Integer llavePrimaria = Integer.valueOf(value);
+            Integer llave = Integer.valueOf(value);
             Controlador controlador = (Controlador) context.getELContext().getELResolver().getValue(context.getELContext(), null, nombreControlador);
-            return controlador.getEntidad(llavePrimaria);
+            return controlador.getEntidad(llave);
         } catch (NumberFormatException e) {
-            System.out.println("Convertidor (" +value+ ") :no se pudo convertir a entidad Convertidor " +e.getMessage());
+            System.out.println("No se pudo convertir a objeto");
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -35,14 +35,16 @@ public class Convertidor implements Converter{
         try {
             if(value instanceof Entidad) {
                 Entidad entidad = (Entidad) value;
+                System.out.println(entidad.getId().toString());
                 return entidad.getId().toString();
             }else {
-                System.out.println("Convertidor : no es una instacia de Entidad");
+                System.out.println("No es una instacia de Entidad");
+                return null;
             }
         } catch (Exception e) {
-            System.out.println("Convertidor : no se pudo convertir a string " + e.getMessage());
+            System.out.println("No se pudo convertir a String");
+            return null;
         }
-        return new String();
     }
     
 }

@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,8 +44,9 @@ public class PreguntaSecreta implements Serializable, Entidad {
     private Integer id;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "pregunta")
-    private int pregunta;
+    private String pregunta;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "preguntaSecretaId")
     private List<Usuario> usuarioList;
 
@@ -55,7 +57,7 @@ public class PreguntaSecreta implements Serializable, Entidad {
         this.id = id;
     }
 
-    public PreguntaSecreta(Integer id, int pregunta) {
+    public PreguntaSecreta(Integer id, String pregunta) {
         this.id = id;
         this.pregunta = pregunta;
     }
@@ -69,11 +71,11 @@ public class PreguntaSecreta implements Serializable, Entidad {
         this.id = id;
     }
 
-    public int getPregunta() {
+    public String getPregunta() {
         return pregunta;
     }
 
-    public void setPregunta(int pregunta) {
+    public void setPregunta(String pregunta) {
         this.pregunta = pregunta;
     }
 
