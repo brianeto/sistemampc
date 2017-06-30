@@ -1,6 +1,265 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./WEB-INF/template/indexTemplate.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <h:outputStylesheet name="index/css/style.css"/>
+        <h:outputStylesheet name="index/css/responsive.css"/>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <b:growl />
+        <header id="HOME" style="background-position: 100vh - 120px;">
+            <div class="section_overlay">
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="navbar-brand">
+                            <h:graphicImage name="index/images/mpcrojo.png" style="position: fixed;" width="140"/>
+                        </span>
+                    </div>
 
-</ui:composition>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <input type="number" class="form-control" id="cedula" placeholder="Cedula"/><br/>
+                            <input type="password" class="form-control" id="clave" placeholder="Clave"/><br/>
+                            <button type="button" class="btn btn-danger submit-btn form_submit">Ingresar</button>                              
+
+                        </div>
+
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right" style="padding-right: 40px">
+                            <li><a href="#HOME">Inicio</a></li>
+                            <li><a href="#SERVICE">Nosotros</a></li>
+                            <li><a href="#ABOUT">Contacto</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav> 
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="home_text ">
+                            <h2>Mantenimiento preventivo y correctivo de vehículos</h2>
+                            <h3 style="margin-bottom: 20px"><b>¡MPC</b> tu mejor opción!</h3> 
+                            <div class="row center-xs" style="padding-top: 30px">
+                                <div class="col-xs-12 col-sm-4 flex between-xs">
+                                    <b:button value="Iniciar sesión" 
+                                              iconAwesome="sign-in"
+                                              class="btn-default btn-lg"/>
+                                    <b:button value="Crear cuenta" 
+                                              iconAwesome="user-plus"
+                                              class="btn-danger btn-lg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="services" id="SERVICE">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 text-center">
+                    <div class="single_service " >
+                        <i class="fa fa-car"></i>
+                        <h2>Mantenimientos</h2>
+                        <p>Mantenga en optimo estado sus vehículos</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 text-center">
+                    <div class="single_service ">
+                        <i class="fa fa-cogs" ></i>
+                        <h2>Componentes</h2>
+                        <p>Control y eficiencia del monitoreo a los componentes del vehículo.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 text-center">
+                    <div class="single_service ">
+                        <i class="fa fa-clipboard"></i>
+                        <h2>Órdenes</h2>
+                        <p>Planeación de las tareas de mantenimiento, por medio de las órdenes generadas.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 text-center">
+                    <div class="single_service ">
+                        <i class="fa fa-usd"></i>
+                        <h2>Economia</h2>
+                        <p>Evite las pérdidas económicas por reparaciones al no realizar controles preventivos.</p>
+                    </div>
+                </div>
+            </div>            
+        </section>
+        <section class="about_us_area" id="ABOUT">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <div class="about_title">
+                        <h2>Nosotros</h2>
+                        <h:graphicImage name="index/images/shape.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-4  ">
+                    <div class="single_progress_bar">
+                        <h2>DISEÑO </h2>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_progress_bar">
+                        <h2>DESARROLLO </h2>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_progress_bar">
+                        <h2>CALIDAD </h2>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <p class="about_us_p"><b>Objetivo: </b></p>
+                    <p class="about_us_p">Sistema creado para la gestion de los mantenimientos preventivos y correctivos de los vehículos</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <p class="about_us_p"><b>FUNCIONALIDADES: </b></p>
+                    <p class="about_us_p"><i class="icon-gears" style="color:red;"></i>   Seguimiento a los componentes de los vehículos por medio de su vida útil  </p>
+                    <p class="about_us_p"><i class="icon-gears" style="color:red;"></i>   Control de la documentación de los vehículos y conductores</p>
+                    <p class="about_us_p"><i class="icon-gears" style="color:red;"></i>   Generación de reportes para la ayuda en la toma de decisiones  </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="testimonial text-center" id="TESTIMONIAL">
+            <div >
+                <div class="icon">
+                    <i class="icon-quote"></i>
+                </div>
+
+            </div>
+        </section>
+
+
+        <div class="fun_facts" style="margin-top:150px;">
+            <section class="header parallax home-parallax page" id="fun_facts" style="background-position: 50% -150px;">
+                <div class="section_overlay">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-md-6" style="color:white; font-size:1.2em;">
+
+                                    <i class="icon-toolbox"></i>
+                                    <h3>Interfaz</h3>
+                                    <p>Amigable a la vista</p>
+                                    <h3>Navegabilidad</h3>
+                                    <p>Facíl uso</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-5 col-md-offset-1">
+                            <div class="imac">
+                                <h:graphicImage name="index/images/bga.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>    
+        </div>
+
+
+        <section class="contact" id="ABOUT">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <div class="contact_title ">
+                        <h1>Contactanos</h1>
+                        <h:graphicImage name="index/images/shape.png"/>
+                        <p><b>HOLA. </b>¿EN QUE TE PODEMOS AYUDAR?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-3  ">
+                    <div class="single_contact_info">
+                        <h2>Contactame</h2>
+                        <p>(+57) 311 512 3428</p>
+                    </div>
+                    <div class="single_contact_info">
+                        <h2>Escribenos</h2>
+                        <p>gaesmpc@gmail.com</p>
+                    </div>
+                    <div class="single_contact_info">
+                        <h2>Dirección</h2>
+                        <p>Cll 135 Bis # 90 - 15</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-9 ">
+                    <form class="contact-form" action="">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <input type="text" class="form-control" id="name" placeholder="Nombre"></input>
+                                <input type="email" class="form-control" id="email" placeholder="Correo electronico"></input>
+                                <input type="text" class="form-control" id="subject" placeholder="Asunto">  </input>                              
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <textarea class="form-control" id="message" rows="25" cols="10" placeholder=" Mensaje ..."></textarea>
+                                <button type="button" class="btn btn-danger submit-btn form_submit">ENVIAR MENSAJE</button>                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <div class="work-with ">
+                        <h3>¡Te esperamos!</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <p><b>&copy;</b><h:graphicImage name="index/images/mpcrojo.png" width="40px"/><b> <script type="text/javascript">
+                        document.write(new Date().getFullYear());
+                            </script></b></p>
+                </div>
+            </div>
+        </footer>
+
+        <h:outputScript name="index/js/modal.js"/>
+    </h:body>
+</html>
+
