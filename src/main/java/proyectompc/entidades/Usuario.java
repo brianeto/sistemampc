@@ -59,7 +59,7 @@ public class Usuario implements Serializable, Entidad {
     @NotNull
     @Size(min = 1, max = 60)
     @Pattern(regexp = "^[a-zA-Z]{9,}+$", message = "Este campo solo permite letras con un mínimo de 9 caracteres.")
-    @Column(name = "usuario")
+    @Column(name = "usuario", unique = true)
     private String usuario;
     @Basic(optional = false)
     @NotNull

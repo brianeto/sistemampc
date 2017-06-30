@@ -100,9 +100,8 @@ public class RegistrarEmpresaControlador implements Serializable{
     
     
     public void registrarEmpresa(){
-        
+        registrarEmpresa.registrarEmpresa(usuario, empresa, contactoEmpresa);
     }
-    
     
     public String onFlowProcess(FlowEvent event) {
         if(skip) {

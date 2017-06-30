@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 import proyectompc.cliente.negocio.RegistrarCliente;
 import proyectompc.entidades.Cliente;
 import proyectompc.entidades.Usuario;
@@ -104,13 +105,19 @@ public class RegistarClienteControlador implements Serializable {
         int num = 0;
         if (registrarCliente.existeCorreoElectronico(cliente.getCorreoElectronico()) > 0) {
             context.addMessage(
-                    "correoElectronico",
+                    null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El correo electrónico ya se encuentra en uso."));
+            num++;
+        }
+        if (registrarCliente.existeUsuario(usuario.getUsuario()) > 0) {
+            context.addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El nombre de usuario ya se encuentra en uso."));
             num++;
         }
         if (registrarCliente.existeNumeroCedula(cliente.getNumeroCedula()) > 0) {
             context.addMessage(
-                    "numeroCedula",
+                    null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El número de cédula ya se encuentra en uso."));
             num++;
         }
@@ -127,11 +134,8 @@ public class RegistarClienteControlador implements Serializable {
             this.setCliente(new Cliente());
             this.setUsuario(new Usuario());
             this.repetirClave = new String();
-        } else {
-            FacesContext.getCurrentInstance().addMessage(
-                    "correoElectronico",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El correo electrónico ya se encuentra en uso."));
         }
+        RequestContext.getCurrentInstance().update("formClienteRegistro");
     }
 
 }

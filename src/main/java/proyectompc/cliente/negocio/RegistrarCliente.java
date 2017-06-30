@@ -43,6 +43,15 @@ public class RegistrarCliente{
         return 1;
     }
     
+    public int existeUsuario(String usuario) {
+        try {
+            return getEntityManager().createNamedQuery("Usuario.findByUsuario").setParameter("usuario", usuario).getResultList().size();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return 1;
+    }
+    
     public int existeNumeroCedula(String numeroCedula) {
         try {
             return getEntityManager().createNamedQuery("Cliente.findByNumeroCedula").setParameter("numeroCedula", numeroCedula).getResultList().size();
@@ -54,13 +63,10 @@ public class RegistrarCliente{
     
     public String registarCliente(Usuario usuario, Cliente cliente) {
         try {
-            Estado estado = new Estado(2);
-            TipoUsuario tipoUsuario = new TipoUsuario(2);
-            String claveCifrada = UtilidadString.cifrarStringSha(usuario.getClave());
-            usuario.setEstadoId(estado);
-            usuario.setClave(claveCifrada);
-            usuario.setHashUser(UtilidadString.generarClave(15) + tipoUsuario.getId());
-            usuario.setTipoUsuarioId(tipoUsuario);
+            usuario.setEstadoId(new Estado(2));
+            usuario.setClave(UtilidadString.cifrarStringSha(usuario.getClave()));
+            usuario.setHashUser(UtilidadString.generarClave(15) + 2);
+            usuario.setTipoUsuarioId(new TipoUsuario(2));
             getEntityManager().persist(usuario);
             usuario = getUsuario(usuario.getHashUser());
             cliente.setUsuarioId(usuario);

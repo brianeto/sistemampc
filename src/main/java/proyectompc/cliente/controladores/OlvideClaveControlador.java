@@ -30,6 +30,7 @@ public class OlvideClaveControlador implements Serializable{
 
     @Pattern(regexp = "[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]+", message = "Correo electrónico no válido.")
     private String correoElectronico;
+    private String usuario;
 
     public String getCorreoElectronico() {
         return correoElectronico;
@@ -39,16 +40,26 @@ public class OlvideClaveControlador implements Serializable{
         this.correoElectronico = correoElectronico;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    
     public OlvideClaveControlador() {
     }
 
     @PostConstruct
     public void iniciar() {
         correoElectronico = new String();
+        usuario = new String();
     }
 
     public void actualizarClave() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(olvideClave.cambioClave(correoElectronico)));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(olvideClave.cambioClave(correoElectronico, usuario)));
         this.setCorreoElectronico(new String());
     }
 

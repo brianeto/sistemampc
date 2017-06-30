@@ -8,30 +8,32 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <b:panel look="primary"
-                 collapsible="false">
-            <f:facet name="heading">
-                Olvidaste tu contraseña
-            </f:facet>
-            <h:form>
-                <b:formGroup>
-                    <b:growl globalOnly="true"/>
-                </b:formGroup>
-                <b:formGroup class="placeholder-rigth">
-                    <b:inputText label="Correo electronico"
-                                 id="correoE"
-                                 value="#{olvideClaveControlador.correoElectronico}"/>
-                    <b:message for="correoE"/>
-                </b:formGroup>
-                <b:formGroup>
-                    <b:commandButton class="btn-danger"
-                                     type="reset"
-                                     value="Enviar contraseña"
-                                     actionListener="#{olvideClaveControlador.actualizarClave()}"
-                                     update="@form"/>
-                </b:formGroup>
-            </h:form>
-        </b:panel>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <b:panel collapsible="false" look="warning">
+                    <f:facet name="heading" >
+                        <div style="color:white">
+                            Perdi mi contraseña
+                        </div>
+                    </f:facet>
+                    <b:form>
+                        <b:formGroup>
+                            <b:inputText id="correoOlvide"
+                                         value="#{olvideClaveControlador.usuario}"
+                                         required="true"
+                                         requiredMessage="Introdusca un usuario válido"
+                                         label="Correo electrónico"/>
+                            <b:message for="correoOlvide"/>
+                        </b:formGroup>
+                        <b:formGroup>
+                            <b:commandButton look="warning"
+                                             update="@form"
+                                             value="Enviar al correo"/>
+                        </b:formGroup>
+                    </b:form>
+                </b:panel>
+            </div>
+        </div>
     </h:body>
 </html>
 

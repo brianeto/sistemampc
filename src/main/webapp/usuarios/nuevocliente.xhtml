@@ -10,13 +10,13 @@
 
     <ui:define name="main">
         <div class="container-fluid">
+            <b:growl showDetail="true" showSummary="false" globalOnly="true"/>
 
             <div class="row">
                 <div class="col-xs-12" id="empresaRegistro" style="display: none">
                     <div class="row">
                         <div class="col-xs-12 col-md-6 first-md">
                             <h:form>
-                                <p:growl id="growl" sticky="true" showDetail="true"/>
 
                                 <p:wizard flowListener="#{registrarEmpresaControlador.onFlowProcess}" 
                                           nextLabel="Siguiente"
@@ -37,10 +37,10 @@
                                                     <b:message for="razonSocial"/>
                                                 </b:formGroup>
                                                 <b:formGroup>
-                                                    <b:inputText id="direccion"
+                                                    <b:inputText id="direccionE"
                                                                  label="Dirección"
                                                                  value="#{registrarEmpresaControlador.empresa.direccion}"/>
-                                                    <b:message for="direccion"/>
+                                                    <b:message for="direccionE"/>
                                                 </b:formGroup>
                                                 <b:formGroup>
                                                     <h:outputLabel for="sectorEconomico" value="Sector económico *"/>
@@ -105,43 +105,43 @@
                                             </f:facet>
                                             <b:form >
                                                 <b:formGroup>
-                                                    <b:inputText id="usuario"
+                                                    <b:inputText id="usuarioE"
                                                                  label="Usuario"
                                                                  value="#{registrarEmpresaControlador.usuario.usuario}"/>
-                                                    <b:message for="usuario"/>
+                                                    <b:message for="usuarioE"/>
                                                 </b:formGroup>
                                                 <b:formGroup>
-                                                    <b:inputSecret id="clave"
+                                                    <b:inputSecret id="claveE"
                                                                    label="Contraseña"
                                                                    value="#{registrarEmpresaControlador.usuario.clave}"/>
-                                                    <b:message for="clave"/>
+                                                    <b:message for="claveE"/>
                                                 </b:formGroup>
                                                 <b:formGroup>
-                                                    <b:inputSecret id="cclave"
+                                                    <b:inputSecret id="cclaveE"
                                                                    label="Confirmar contraseña"
                                                                    value="#{registrarEmpresaControlador.repetirClave}">
                                                         <f:validator validatorId="passwordValidator"/>
-                                                        <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
+                                                        <f:attribute name="campo" value="#{component.parent.parent.clientId}:claveE"/>
                                                     </b:inputSecret>
-                                                    <b:message for="cclave"/>
+                                                    <b:message for="cclaveE"/>
                                                 </b:formGroup>
                                                 <b:formGroup>
-                                                    <h:outputLabel for="psecreta" value="Pregunta secreta" class="control-label"/>
-                                                    <h:selectOneMenu id="psecreta"
+                                                    <h:outputLabel for="psecretaE" value="Pregunta secreta" class="control-label"/>
+                                                    <h:selectOneMenu id="psecretaE"
                                                                      class="form-control"
                                                                      title="Le permitira recuperar su cuenta en caso de perdida"
                                                                      value="#{registrarEmpresaControlador.usuario.preguntaSecretaId}" required="true">
                                                         <f:selectItem itemValue="" itemLabel="Seleccione una pregunta secreta"/>
                                                         <f:selectItems value="#{preguntaSecretaControlador.PreguntaSecretas()}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps.id}"/>
                                                     </h:selectOneMenu>
-                                                    <b:message for="psecreta"/>
+                                                    <b:message for="psecretaE"/>
                                                 </b:formGroup>
                                                 <b:formGroup>
-                                                    <b:inputText id="respuesta"
+                                                    <b:inputText id="respuestaE"
                                                                  label="Respuesta Secreta"
                                                                  placeholder="Respuesta Secreta"
                                                                  value="#{registarClienteControlador.usuario.respuestaPreguntaSecreta}"/>
-                                                    <b:message for="respuesta"/>
+                                                    <b:message for="respuestaE"/>
                                                 </b:formGroup>
                                                 <hr />
                                                 <b:commandButton value="Registrar"
@@ -169,16 +169,15 @@
                         <div class="col-xs-12 col-md-6 first-md">
                             <b:panel look="success"
                                      collapsible="false">
-             
                                 <p:fieldset legend="Nuevo cliente">
-                                <h:form>
+                                <h:form id="formClienteRegistro">
                                     <b:messages errorStyle="display:none"/>
                                     <b:formGroup>
-                                        <b:inputText id="usuario"
+                                        <b:inputText id="usuarioC"
                                                      placeholder="Usuario"
                                                      label="Usuario"
                                                      value="#{registarClienteControlador.usuario.usuario}"/>
-                                        <b:message for="usuario"/>
+                                        <b:message for="usuarioC"/>
                                     </b:formGroup>
                                     <b:formGroup>
                                         <h:outputLabel value="Fecha nacimiento *" class="text-muted"/>
@@ -218,7 +217,7 @@
                                                        placeholder="Contraseña"
                                                        label="Contraseña"
                                                        value="#{registarClienteControlador.usuario.clave}"/>
-                                        <b:message for="clave"/>
+                                        <h:message for="clave"/>
                                     </b:formGroup>
                                     <b:formGroup>
                                         <b:inputSecret id="cclave"
@@ -228,7 +227,7 @@
                                             <f:validator validatorId="passwordValidator"/>
                                             <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
                                         </b:inputSecret>
-                                        <b:message for="cclave"/>
+                                        <h:message for="cclave"/>
                                     </b:formGroup>
                                     <b:formGroup>
                                         <h:outputLabel value="Pregunta Secreta" for="psecreta"></h:outputLabel>
@@ -237,9 +236,9 @@
                                                          title="Le permitira recuperar su cuenta en caso de perdida"
                                                          value="#{registarClienteControlador.usuario.preguntaSecretaId}" required="true">
                                             <f:selectItem itemValue="" itemLabel="Seleccione una pregunta secreta"/>
-                                            <f:selectItems value="#{preguntaSecretaControlador.PreguntaSecretas()}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps.id}"/>
+                                            <f:selectItems value="#{preguntaSecretaControlador.PreguntaSecretas()}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps}"/>
                                         </h:selectOneMenu>
-                                        <b:message for="psecreta"/>
+                                        <h:message for="psecreta"/>
                                     </b:formGroup>
 
                                     <b:formGroup>
@@ -275,7 +274,7 @@
                                                      label="Correo electrónico *"
                                                      placeholder="correo eléctronico"
                                                      value="#{registarClienteControlador.cliente.correoElectronico}"/>
-                                        <b:message for="correo"/>
+                                        <h:message for="correo"/>
                                     </b:formGroup>
                                     <hr />
                                     <b:commandButton class="btn-success" 
