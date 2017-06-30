@@ -52,7 +52,7 @@ public class SectorEconomicoControlador implements Serializable, Controlador<Sec
         return sectoreconomicoFacade.find(llavePrimaria);
     }
     
-    public List<SectorEconomico> SectorEconomicos(){
+    public List<SectorEconomico> sectorEconomicos(){
         return sectoreconomicoFacade.findAll();
     }
     

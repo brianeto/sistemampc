@@ -50,7 +50,7 @@
                                                              required="true"
                                                              requiredMessage="Se requiere de un sector económico.">
                                                 <f:selectItem itemLabel="Seleccion" itemValue=""/>
-                                                <f:selectItems value="#{sectorEconomicoControlador.SectorEconomicos()}" itemLabel="#{se.nombre}" var="se" itemValue="#{se}"/>
+                                                <f:selectItems value="#{sectorEconomicoControlador.sectorEconomicos()}" itemLabel="#{se.nombre}" var="se" itemValue="#{se}"/>
                                             </h:selectOneMenu>
                                             <b:message for="sectorEconomico"/>
                                         </b:formGroup>
