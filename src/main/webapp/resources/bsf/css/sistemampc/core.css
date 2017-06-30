@@ -5184,7 +5184,7 @@ button.list-group-item-danger {
     border-bottom-color: #16a085; }
 
 .panel-success {
-  border-color: #27ae60; }
+  border-color: #4682B4; }
   .panel-success > .panel-heading {
     color: #fff;
     background-color: #27ae60;
@@ -6140,11 +6140,11 @@ form .flex > div {
     border-radius: 0px;
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    border: 1px solid #16a085;
+    border: 1px solid #fff;
     background: #16a085;
     background: #16a085;
     background: #16a085;
-    background: #16a085;
+    background: #4682B4;
     font-weight: initial;
     color: #fff;
     text-shadow: none;
@@ -6156,7 +6156,7 @@ form .flex > div {
     background: #aaa linear-gradient(top,rgba(0,0,0,0.25),rgba(0,0,0,0));
     background: #fff;
     background: #fff;
-    color: #666;
+    color: black;
     text-shadow: none;
 }
 .ui-state-default {
