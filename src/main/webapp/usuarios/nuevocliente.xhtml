@@ -12,273 +12,295 @@
         <div class="container-fluid">
 
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <h:form>
+                <div class="col-xs-12" id="empresaRegistro" style="display: none">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 first-md">
+                            <h:form>
+                                <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                        <p:growl id="growl" sticky="true" showDetail="true"/>
+                                <p:wizard flowListener="#{registrarEmpresaControlador.onFlowProcess}" 
+                                          nextLabel="Siguiente"
+                                          backLabel="Volver">
+                                    <p:tab id="personal" title="Datos generales">
+                                        <b:panel look="success"
+                                                 collapsible="false">
+                                            <f:facet name="heading">
+                                                <div style="color:white">
+                                                    Datos con los cuales se distingue a la empresa
+                                                </div>
+                                            </f:facet>
+                                            <b:form >
+                                                <b:formGroup>
+                                                    <b:inputText id="razonSocial"
+                                                                 label="Razón social"
+                                                                 value="#{registrarEmpresaControlador.empresa.razonSocial}"/>
+                                                    <b:message for="razonSocial"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputText id="direccion"
+                                                                 label="Dirección"
+                                                                 value="#{registrarEmpresaControlador.empresa.direccion}"/>
+                                                    <b:message for="direccion"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <h:outputLabel for="sectorEconomico" value="Sector económico *"/>
+                                                    <h:selectOneMenu id="sectorEconomico"
+                                                                     class="form-control"
+                                                                     value="#{registrarEmpresaControlador.empresa.sectorEconomicoId}"
+                                                                     required="true"
+                                                                     requiredMessage="Se requiere de un sector económico.">
+                                                        <f:selectItem itemLabel="Seleccion" itemValue=""/>
+                                                        <f:selectItems value="#{sectorEconomicoControlador.sectorEconomicos()}" itemLabel="#{se.nombre}" var="se" itemValue="#{se}"/>
+                                                    </h:selectOneMenu>
+                                                    <b:message for="sectorEconomico"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputText id="sitioWeb"
+                                                                 label="Dirección sitio web (Opcional)"
+                                                                 value="#{registrarEmpresaControlador.empresa.sitioWeb}"/>
+                                                    <b:message for="sitioWeb"/>
+                                                </b:formGroup>
+                                            </b:form>
+                                        </b:panel>
+                                    </p:tab>
 
-                        <p:wizard flowListener="#{registrarEmpresaControlador.onFlowProcess}" 
-                                  nextLabel="Siguiente"
-                                  backLabel="Volver">
-                            <p:tab id="personal" title="Datos generales">
-                                <b:panel look="success"
-                                         collapsible="false">
-                                    <f:facet name="heading">
-                                        <div style="color:white">
-                                            Datos con los cuales se distingue a la empresa
-                                        </div>
-                                    </f:facet>
-                                    <b:form >
-                                        <b:formGroup>
-                                            <b:inputText id="razonSocial"
-                                                         label="Razón social"
-                                                         value="#{registrarEmpresaControlador.empresa.razonSocial}"/>
-                                            <b:message for="razonSocial"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputText id="direccion"
-                                                         label="Dirección"
-                                                         value="#{registrarEmpresaControlador.empresa.direccion}"/>
-                                            <b:message for="direccion"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <h:outputLabel for="sectorEconomico" value="Sector económico *"/>
-                                            <h:selectOneMenu id="sectorEconomico"
-                                                             class="form-control"
-                                                             value="#{registrarEmpresaControlador.empresa.sectorEconomicoId}"
-                                                             required="true"
-                                                             requiredMessage="Se requiere de un sector económico.">
-                                                <f:selectItem itemLabel="Seleccion" itemValue=""/>
-                                                <f:selectItems value="#{sectorEconomicoControlador.sectorEconomicos()}" itemLabel="#{se.nombre}" var="se" itemValue="#{se}"/>
-                                            </h:selectOneMenu>
-                                            <b:message for="sectorEconomico"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputText id="sitioWeb"
-                                                         label="Dirección sitio web (Opcional)"
-                                                         value="#{registrarEmpresaControlador.empresa.sitioWeb}"/>
-                                            <b:message for="sitioWeb"/>
-                                        </b:formGroup>
-                                    </b:form>
-                                </b:panel>
-                            </p:tab>
+                                    <p:tab id="address" title="Datos de contacto">
+                                        <b:panel look="info"
+                                                 collapsible="false">
+                                            <f:facet name="heading">
+                                                <div style="color:white">
+                                                    Datos de contacto de la empresa.
+                                                </div>
+                                            </f:facet>
+                                            <b:form >
+                                                <b:formGroup>
+                                                    <b:inputText id="nombreContact"
+                                                                 label="Nombre completo"
+                                                                 value="#{registrarEmpresaControlador.contactoEmpresa.nombreCompleto}"/>
+                                                    <b:message for="nombreContact"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputText id="numeroTelefono"
+                                                                 label="Número teléfono"
+                                                                 value="#{registrarEmpresaControlador.contactoEmpresa.numeroTelefono}"/>
+                                                    <b:message for="numeroTelefono"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputText id="correoElectronicoContact"
+                                                                 label="Correo electrónico"
+                                                                 value="#{registrarEmpresaControlador.contactoEmpresa.correoElectronico}"/>
+                                                    <b:message for="correoElectronicoContact"/>
+                                                </b:formGroup>
+                                            </b:form>
+                                        </b:panel>
+                                    </p:tab>
 
-                            <p:tab id="address" title="Datos de contacto">
-                                <b:panel look="info"
-                                         collapsible="false">
-                                    <f:facet name="heading">
-                                        <div style="color:white">
-                                            Datos de contacto de la empresa.
-                                        </div>
-                                    </f:facet>
-                                    <b:form >
-                                        <b:formGroup>
-                                            <b:inputText id="nombreContact"
-                                                         label="Nombre completo"
-                                                         value="#{registrarEmpresaControlador.contactoEmpresa.nombreCompleto}"/>
-                                            <b:message for="nombreContact"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputText id="numeroTelefono"
-                                                         label="Número teléfono"
-                                                         value="#{registrarEmpresaControlador.contactoEmpresa.numeroTelefono}"/>
-                                            <b:message for="numeroTelefono"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputText id="correoElectronicoContact"
-                                                         label="Correo electrónico"
-                                                         value="#{registrarEmpresaControlador.contactoEmpresa.correoElectronico}"/>
-                                            <b:message for="correoElectronicoContact"/>
-                                        </b:formGroup>
-                                    </b:form>
-                                </b:panel>
-                            </p:tab>
+                                    <p:tab id="contact" title="Datos de ingreso">
+                                        <b:panel look="success"
+                                                 collapsible="false">
+                                            <f:facet name="heading">
+                                                <div style="color:white">
+                                                    Datos de ingreso
+                                                </div>
+                                            </f:facet>
+                                            <b:form >
+                                                <b:formGroup>
+                                                    <b:inputText id="usuario"
+                                                                 label="Usuario"
+                                                                 value="#{registrarEmpresaControlador.usuario.usuario}"/>
+                                                    <b:message for="usuario"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputSecret id="clave"
+                                                                   label="Contraseña"
+                                                                   value="#{registrarEmpresaControlador.usuario.clave}"/>
+                                                    <b:message for="clave"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputSecret id="cclave"
+                                                                   label="Confirmar contarseña"
+                                                                   value="#{registrarEmpresaControlador.repetirClave}">
+                                                        <f:validator validatorId="passwordValidator"/>
+                                                        <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
+                                                    </b:inputSecret>
+                                                    <b:message for="cclave"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <h:outputLabel for="psecreta" value="Pregunta secreta" class="control-label"/>
+                                                    <h:selectOneMenu id="psecreta"
+                                                                     class="form-control"
+                                                                     title="Le permitira recuperar su cuenta en caso de perdida"
+                                                                     value="#{registrarEmpresaControlador.usuario.preguntaSecretaId}" required="true">
+                                                        <f:selectItem itemValue="" itemLabel="Seleccione una pregunta secreta"/>
+                                                        <f:selectItems value="#{preguntaSecretaControlador.PreguntaSecretas()}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps.id}"/>
+                                                    </h:selectOneMenu>
+                                                    <b:message for="psecreta"/>
+                                                </b:formGroup>
+                                                <b:formGroup>
+                                                    <b:inputText id="respuesta"
+                                                                 label="Respuesta Secreta"
+                                                                 placeholder="Respuesta Secreta"
+                                                                 value="#{registarClienteControlador.usuario.respuestaPreguntaSecreta}"/>
+                                                    <b:message for="respuesta"/>
+                                                </b:formGroup>
+                                                <hr />
+                                                <b:commandButton value="Registrar"
+                                                                 largeScreen="full-screen"
+                                                                 look="success"
+                                                                 actionListener="#{registrarEmpresaControlador.registrarEmpresa()}"/>
+                                            </b:form>
+                                        </b:panel>
+                                    </p:tab>
+                                </p:wizard>
 
-                            <p:tab id="contact" title="Datos de ingreso">
-                                <b:panel look="success"
-                                         collapsible="false">
-                                    <f:facet name="heading">
-                                        <div style="color:white">
-                                            Datos de ingreso
-                                        </div>
-                                    </f:facet>
-                                    <b:form >
-                                        <b:formGroup>
-                                            <b:inputText id="usuario"
-                                                         label="Usuario"
-                                                         value="#{registrarEmpresaControlador.usuario.usuario}"/>
-                                            <b:message for="usuario"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputSecret id="clave"
-                                                           label="Contraseña"
-                                                           value="#{registrarEmpresaControlador.usuario.clave}"/>
-                                            <b:message for="clave"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputSecret id="cclave"
-                                                           label="Confirmar contarseña"
-                                                           value="#{registrarEmpresaControlador.repetirClave}">
-                                                <f:validator validatorId="passwordValidator"/>
-                                                <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
-                                            </b:inputSecret>
-                                            <b:message for="cclave"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <h:outputLabel for="psecreta" value="Pregunta secreta" class="control-label"/>
-                                            <h:selectOneMenu id="psecreta"
-                                                             class="form-control"
-                                                             title="Le permitira recuperar su cuenta en caso de perdida"
-                                                             value="#{registrarEmpresaControlador.usuario.preguntaSecretaId}" required="true">
-                                                <f:selectItem itemValue="" itemLabel="Seleccione una pregunta secreta"/>
-                                                <f:selectItems value="#{preguntaSecretaControlador.PreguntaSecretas()}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps.id}"/>
-                                            </h:selectOneMenu>
-                                            <b:message for="psecreta"/>
-                                        </b:formGroup>
-                                        <b:formGroup>
-                                            <b:inputText id="respuesta"
-                                                         label="Respuesta Secreta"
-                                                         placeholder="Respuesta Secreta"
-                                                         value="#{registarClienteControlador.usuario.respuestaPreguntaSecreta}"/>
-                                            <b:message for="respuesta"/>
-                                        </b:formGroup>
-                                        <hr />
-                                        <b:commandButton value="Registrar"
-                                                         largeScreen="full-screen"
-                                                         look="success"
-                                                         actionListener="#{registrarEmpresaControlador.registrarEmpresa()}"/>
-                                    </b:form>
-                                </b:panel>
-                            </p:tab>
-                        </p:wizard>
-
-                    </h:form>
+                            </h:form>
+                        </div>
+                        <div class="col-xs-12 col-md-6 first-xs">
+                            <b:button value="No soy una empresa" id="clickEmpresa"/>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <b:panel>
-                        <f:facet name="heading">
-                            Nuevo cliente
-                        </f:facet>
-                        <h:form>
-                            <b:messages errorStyle="display:none"/>
-                            <b:formGroup>
-                                <b:inputText id="usuario"
-                                             placeholder="Usuario"
-                                             label="Usuario"
-                                             value="#{registarClienteControlador.usuario.usuario}"/>
-                                <b:message for="usuario"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <h:outputLabel value="Fecha nacimiento *" class="text-muted"/>
-                                <div class="fechaRegister flex">
-                                    <b:selectOneMenu id="anio"
-                                                     style="flex:1 1 auto"
-                                                     value="#{registarClienteControlador.anio}">
-                                        <f:selectItem itemValue="" itemLabel="Año *"/>
-                                        <f:selectItems value="#{fechaControlador.anios}" var="anio"
-                                                       itemLabel="#{anio}" itemValue="#{anio}"
-                                                       rendered="true"/>
-                                    </b:selectOneMenu>
-                                    <b:selectOneMenu id="mes"
-                                                     style="flex:1 1 auto"
-                                                     value="#{registarClienteControlador.mes}"
-                                                     required="true">
-                                        <f:selectItem itemValue="" itemLabel="Mes *"/>
-                                        <f:selectItems value="#{fechaControlador.meses}" var="mes"
-                                                       itemLabel="#{mes[1]}" itemValue="#{mes[0]}"/>
-                                    </b:selectOneMenu>
-                                    <b:selectOneMenu id="dia"
-                                                     style="flex:1 1 auto"
-                                                     value="#{registarClienteControlador.dia}"
-                                                     required="true">
-                                        <f:selectItem itemValue="" itemLabel="Día *"/>
-                                        <f:selectItems value="#{fechaControlador.dias}" var="dia" itemValue="#{dia}"  itemLabel="#{dia}"/>
-                                    </b:selectOneMenu>
-                                </div>
-                            </b:formGroup>
-                            <div class="form-group mensaje">
-                                <h:message errorClass="alert alert-danger" warnClass="alert alert-warning" for="anio"/>
-                                <h:message errorClass="alert alert-danger" warnClass="alert alert-warning" for="mes"/>
-                                <h:message errorClass="alert alert-danger" warnClass="alert alert-warning" for="dia"/>
-                            </div>
-                            <b:formGroup>
-                                <b:inputSecret id="clave"
-                                               placeholder="Contraseña"
-                                               label="Contarseña"
-                                               value="#{registarClienteControlador.usuario.clave}"/>
-                                <b:message for="clave"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputSecret id="cclave"
-                                               placeholder="Confirmar contraseña"
-                                               label="Confirmar contarseña"
-                                               value="#{registarClienteControlador.repetirClave}">
-                                    <f:validator validatorId="passwordValidator"/>
-                                    <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
-                                </b:inputSecret>
-                                <b:message for="cclave"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <h:selectOneMenu class="form-control" id="psecreta"
-                                                 label="Pregunta secreta"
-                                                 title="Le permitira recuperar su cuenta en caso de perdida"
-                                                 value="#{registarClienteControlador.usuario.preguntaSecretaId}" required="true">
-                                    <f:selectItem itemValue="" itemLabel="Seleccione una pregunta secreta"/>
-                                    <f:selectItems value="#{preguntaSecretaControlador.setPreguntaSecreta(preguntasecreta)}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps.id}"/>
-                                </h:selectOneMenu>
-                                <b:message for="respuesta"/>
-                            </b:formGroup>
+                <div class="col-xs-12" id="formRegistroCliente">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 first-md">
+                            <b:panel look="success"
+                                     collapsible="false">
+                                <f:facet name="heading">
+                                    Nuevo cliente
+                                </f:facet>
+                                <h:form>
+                                    <b:messages errorStyle="display:none"/>
+                                    <b:formGroup>
+                                        <b:inputText id="usuario"
+                                                     placeholder="Usuario"
+                                                     label="Usuario"
+                                                     value="#{registarClienteControlador.usuario.usuario}"/>
+                                        <b:message for="usuario"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <h:outputLabel value="Fecha nacimiento *" class="text-muted"/>
+                                        <div class="fechaRegister flex">
+                                            <b:selectOneMenu id="anio"
+                                                             style="flex:1 1 auto"
+                                                             value="#{registarClienteControlador.anio}">
+                                                <f:selectItem itemValue="" itemLabel="Año *"/>
+                                                <f:selectItems value="#{fechaControlador.anios}" var="anio"
+                                                               itemLabel="#{anio}" itemValue="#{anio}"
+                                                               rendered="true"/>
+                                            </b:selectOneMenu>
+                                            <b:selectOneMenu id="mes"
+                                                             style="flex:1 1 auto"
+                                                             value="#{registarClienteControlador.mes}"
+                                                             required="true">
+                                                <f:selectItem itemValue="" itemLabel="Mes *"/>
+                                                <f:selectItems value="#{fechaControlador.meses}" var="mes"
+                                                               itemLabel="#{mes[1]}" itemValue="#{mes[0]}"/>
+                                            </b:selectOneMenu>
+                                            <b:selectOneMenu id="dia"
+                                                             style="flex:1 1 auto"
+                                                             value="#{registarClienteControlador.dia}"
+                                                             required="true">
+                                                <f:selectItem itemValue="" itemLabel="Día *"/>
+                                                <f:selectItems value="#{fechaControlador.dias}" var="dia" itemValue="#{dia}"  itemLabel="#{dia}"/>
+                                            </b:selectOneMenu>
+                                        </div>
+                                    </b:formGroup>
+                                    <div class="form-group mensaje">
+                                        <h:message errorClass="alert alert-danger" warnClass="alert alert-warning" for="anio"/>
+                                        <h:message errorClass="alert alert-danger" warnClass="alert alert-warning" for="mes"/>
+                                        <h:message errorClass="alert alert-danger" warnClass="alert alert-warning" for="dia"/>
+                                    </div>
+                                    <b:formGroup>
+                                        <b:inputSecret id="clave"
+                                                       placeholder="Contraseña"
+                                                       label="Contarseña"
+                                                       value="#{registarClienteControlador.usuario.clave}"/>
+                                        <b:message for="clave"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <b:inputSecret id="cclave"
+                                                       placeholder="Confirmar contraseña"
+                                                       label="Confirmar contarseña"
+                                                       value="#{registarClienteControlador.repetirClave}">
+                                            <f:validator validatorId="passwordValidator"/>
+                                            <f:attribute name="campo" value="#{component.parent.parent.clientId}:clave"/>
+                                        </b:inputSecret>
+                                        <b:message for="cclave"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <h:selectOneMenu class="form-control" id="psecreta"
+                                                         label="Pregunta secreta"
+                                                         title="Le permitira recuperar su cuenta en caso de perdida"
+                                                         value="#{registarClienteControlador.usuario.preguntaSecretaId}" required="true">
+                                            <f:selectItem itemValue="" itemLabel="Seleccione una pregunta secreta"/>
+                                            <f:selectItems value="#{preguntaSecretaControlador.setPreguntaSecreta(preguntasecreta)}" var="ps" itemLabel="#{ps.pregunta}" itemValue="#{ps.id}"/>
+                                        </h:selectOneMenu>
+                                        <b:message for="respuesta"/>
+                                    </b:formGroup>
 
-                            <b:formGroup>
-                                <b:inputText id="respuesta"
-                                             label="Respuesta Secreta"
-                                             placeholder="Respuesta Secreta"
-                                             value="#{registarClienteControlador.usuario.respuestaPreguntaSecreta}"/>
-                                <b:message for="respuesta"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputText id="nombre"
-                                             label="Nombre *"
-                                             placeholder="Nombre"
-                                             value="#{registarClienteControlador.cliente.nombres}"/>
-                                <b:message for="nombre"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputText id="ncedula"
-                                             label="Número de cédula *"
-                                             placeholder="Cédula"
-                                             value="#{registarClienteControlador.cliente.numeroCedula}"/>
-                                <b:message for="ncedula"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputText id="apellido"
-                                             placeholder="apellidos"
-                                             label="apellido *"
-                                             value="#{registarClienteControlador.cliente.apellidos}"/>
-                                <b:message for="apellido"/>
-                            </b:formGroup>
-                            <b:formGroup>
-                                <b:inputText id="correo"
-                                             label="Correo electrónico *"
-                                             placeholder="correo eléctronico"
-                                             value="#{registarClienteControlador.cliente.correoElectronico}"/>
-                                <b:message for="correo"/>
-                            </b:formGroup>
-                            <hr />
-                            <b:commandButton class="btn-success" 
-                                             large-screen="full-width"
-                                             value="Registrar"
-                                             actionListener="#{registarClienteControlador.registrarCliente()}" 
-                                             update="@form"/>
-                        </h:form>
-
-
-
-
-                    </b:panel>
+                                    <b:formGroup>
+                                        <b:inputText id="respuesta"
+                                                     label="Respuesta Secreta"
+                                                     placeholder="Respuesta Secreta"
+                                                     value="#{registarClienteControlador.usuario.respuestaPreguntaSecreta}"/>
+                                        <b:message for="respuesta"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <b:inputText id="nombre"
+                                                     label="Nombre *"
+                                                     placeholder="Nombre"
+                                                     value="#{registarClienteControlador.cliente.nombres}"/>
+                                        <b:message for="nombre"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <b:inputText id="ncedula"
+                                                     label="Número de cédula *"
+                                                     placeholder="Cédula"
+                                                     value="#{registarClienteControlador.cliente.numeroCedula}"/>
+                                        <b:message for="ncedula"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <b:inputText id="apellido"
+                                                     placeholder="apellidos"
+                                                     label="apellido *"
+                                                     value="#{registarClienteControlador.cliente.apellidos}"/>
+                                        <b:message for="apellido"/>
+                                    </b:formGroup>
+                                    <b:formGroup>
+                                        <b:inputText id="correo"
+                                                     label="Correo electrónico *"
+                                                     placeholder="correo eléctronico"
+                                                     value="#{registarClienteControlador.cliente.correoElectronico}"/>
+                                        <b:message for="correo"/>
+                                    </b:formGroup>
+                                    <hr />
+                                    <b:commandButton class="btn-success" 
+                                                     large-screen="full-width"
+                                                     value="Registrar"
+                                                     actionListener="#{registarClienteControlador.registrarCliente()}" 
+                                                     update="@form"/>
+                                </h:form>
+                            </b:panel>
+                        </div>
+                        <div class="col-xs-12 col-md-6 first-xs">
+                            <b:button value="¿Eres una empresa?" id="clickCliente"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('#clickCliente').click(function () {
+                    $("#formRegistroCliente").slideUp();
+                    $("#empresaRegistro").slideDown();
+                });
+                $('#clickEmpresa').click(function () {
+                    $("#empresaRegistro").slideUp();
+                    $("#formRegistroCliente").slideDown();
+                });
+            });
+        </script>
     </ui:define>
 
 </ui:composition>
