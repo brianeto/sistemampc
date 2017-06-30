@@ -72,7 +72,7 @@ public class Empresa implements Serializable, Entidad {
     private List<Vehiculo> vehiculoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresaId")
     private List<TelefonoEmpresa> telefonoEmpresaList;
-    @JoinColumn(name = "sector_economico_id", referencedColumnName = "id")
+    @JoinColumn(name = "sector_economico_id", referencedColumnName = "id"   )
     @ManyToOne(optional = false)
     private SectorEconomico sectorEconomicoId;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")

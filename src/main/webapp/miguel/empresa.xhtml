@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -74,8 +75,36 @@
                                 Hola mundo
                             </div>
                         </f:facet>
-                        <b:form>
-
+                        <b:form >
+                            <b:formGroup>
+                                <b:inputText id="razonSocial"
+                                             label="Razón social"
+                                             value="#{registrarEmpresaControlador.empresa.razonSocial}"/>
+                                <b:message for="razonSocial"/>
+                            </b:formGroup>
+                            <b:formGroup>
+                                <b:inputText id="direccion"
+                                             label="Dirección"
+                                             value="#{registrarEmpresaControlador.empresa.direccion}"/>
+                                <b:message for="direccion"/>
+                            </b:formGroup>
+                            <b:formGroup>
+                                <h:outputLabel for="sectorEconomico" value="Sector económico *"/>
+                                <h:selectOneMenu id="sectorEconomico"
+                                                 class="form-control"
+                                                 value="#{registrarEmpresaControlador.empresa.sectorEconomicoId}"
+                                                 required="true"
+                                                 requiredMessage="Se requiere de un sector económico.">
+                                    <f:selectItem itemLabel="Seleccion" itemValue=""/>
+                                    <f:selectItems value="#{sectorEconomicoControlador.SectorEconomicos()}" itemLabel="#{se.nombre}" var="se" itemValue="#{se}"/>
+                                </h:selectOneMenu>
+                                <b:message for="sectorEconomico"/>
+                            </b:formGroup>
+                            <hr />
+                            <b:commandButton value="Registrar"
+                                             update="@form"
+                                             largeScreen="full-width"
+                                             class="btn-success"/>
                         </b:form>
                     </b:panel>
                 </div>
