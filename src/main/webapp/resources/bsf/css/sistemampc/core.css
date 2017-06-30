@@ -6071,3 +6071,59 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+
+form .alert .bf-message-icon{
+    display:none
+}
+form .form-group {
+    margin-bottom:7px;
+}
+form .mensaje {
+    padding:0px;
+}
+form .mensaje .alert,
+form .alert.alert-danger.bf-message{
+    padding:0px;
+    border-radius:0px;
+    color:#e74c3c;
+    border-color:transparent;
+    background:transparent;
+}
+form .bf-error input,
+form .bf-error select{
+    border-color:#ddd !important;
+}
+form .bf-error input:focus,
+form .bf-error select:focus{
+    box-shadow:none !important;
+}
+form .form-boton {
+    padding:10px 20px;
+}
+form .form-boton button{
+    width:100%;
+}
+form .control-label,
+form .bf-error .control-label {
+    color: #666;
+}
+form .flex {
+    display: flex;
+}
+form .flex > div {
+    flex: 1 1 auto;
+}
+
+.placeholder-rigth input::-webkit-input-placeholder { /* WebKit browsers */
+    direction: rtl;
+}
+.placeholder-rigth input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    direction: rtl;
+}
+.placeholder-rigth input::-moz-placeholder { /* Mozilla Firefox 19+ but I'm not sure about working */
+    direction: rtl;
+}
+.placeholder-rigth input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    direction: rtl;
+}
