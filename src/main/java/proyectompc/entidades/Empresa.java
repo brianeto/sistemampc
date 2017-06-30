@@ -62,7 +62,6 @@ public class Empresa implements Serializable, Entidad {
     @Basic(optional = false)
     @NotNull
     @Size(min = 8, max = 120, message = "Campo dirección vacío, mínimo 2 caracteres")
-    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Este campo no permite caracteres especiales")
     @Column(name = "direccion")
     private String direccion;
     @Size(max = 200)
