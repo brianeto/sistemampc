@@ -51,6 +51,11 @@ public class ContactoEmpresa implements Serializable, Entidad {
     @Size(min = 1, max = 150)
     @Column(name = "correo_electronico")
     private String correoElectronico;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "numero_telefono")
+    private String numeroTelefono;
     @JoinColumn(name = "empresa_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Empresa empresaId;
@@ -62,10 +67,11 @@ public class ContactoEmpresa implements Serializable, Entidad {
         this.id = id;
     }
 
-    public ContactoEmpresa(Integer id, String nombreCompleto, String correoElectronico) {
+    public ContactoEmpresa(Integer id, String nombreCompleto, String correoElectronico, String numeroTelefono) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.correoElectronico = correoElectronico;
+        this.numeroTelefono = numeroTelefono;
     }
 
     @Override
@@ -93,6 +99,14 @@ public class ContactoEmpresa implements Serializable, Entidad {
         this.correoElectronico = correoElectronico;
     }
 
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+    
     public Empresa getEmpresaId() {
         return empresaId;
     }
@@ -101,6 +115,7 @@ public class ContactoEmpresa implements Serializable, Entidad {
         this.empresaId = empresaId;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 0;

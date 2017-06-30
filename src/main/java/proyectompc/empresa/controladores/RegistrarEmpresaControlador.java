@@ -10,8 +10,10 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
+import org.primefaces.event.FlowEvent;
 import proyectompc.empresa.negocio.RegistrarEmpresa;
+import proyectompc.entidades.ContactoEmpresa;
 import proyectompc.entidades.Empresa;
 import proyectompc.entidades.TelefonoEmpresa;
 import proyectompc.entidades.Usuario;
@@ -21,15 +23,17 @@ import proyectompc.entidades.Usuario;
  * @author Andres
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class RegistrarEmpresaControlador implements Serializable{
 
     private static final long serialVersionUID = 12L;
     @EJB
     private RegistrarEmpresa registrarEmpresa;
     
+    private boolean skip;
     private Usuario usuario;
     private Empresa empresa;
+    private ContactoEmpresa contactoEmpresa;
     private TelefonoEmpresa telefonoEmpresa;
     private String repetirClave; 
     
@@ -64,7 +68,22 @@ public class RegistrarEmpresaControlador implements Serializable{
     public void setRepetirClave(String repetirClave) {
         this.repetirClave = repetirClave;
     }
-    
+
+    public boolean isSkip() {
+        return skip;
+    }
+
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+
+    public ContactoEmpresa getContactoEmpresa() {
+        return contactoEmpresa;
+    }
+
+    public void setContactoEmpresa(ContactoEmpresa contactoEmpresa) {
+        this.contactoEmpresa = contactoEmpresa;
+    }
     
     public RegistrarEmpresaControlador(){
     }
@@ -75,6 +94,8 @@ public class RegistrarEmpresaControlador implements Serializable{
         empresa = new Empresa();
         telefonoEmpresa = new TelefonoEmpresa();
         repetirClave = new String();
+        skip = false;
+        contactoEmpresa = new ContactoEmpresa();
     }
     
     
@@ -82,4 +103,14 @@ public class RegistrarEmpresaControlador implements Serializable{
         
     }
     
+    
+    public String onFlowProcess(FlowEvent event) {
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
+    }
 }

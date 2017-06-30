@@ -6127,3 +6127,40 @@ form .flex > div {
 .placeholder-rigth input:-ms-input-placeholder { /* Internet Explorer 10+ */
     direction: rtl;
 }
+
+.ui-wizard-step-title {
+    font-size: 1em;
+    margin: 0 3px 0 0;
+    padding: .4em;
+    float: left;
+}
+.ui-corner-all {
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid #16a085;
+    background: #16a085;
+    background: #16a085;
+    background: #16a085;
+    background: #16a085;
+    font-weight: initial;
+    color: #fff;
+    text-shadow: none;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #cacaca;
+    border-radius: 0px;
+    background: #Fff;
+    background: #aaa linear-gradient(top,rgba(0,0,0,0.25),rgba(0,0,0,0));
+    background: #fff;
+    background: #fff;
+    color: #666;
+    text-shadow: none;
+}
+.ui-state-default {
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    -webkit-box-shadow: none !important;
+    box-shadow: none;
+}
