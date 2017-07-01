@@ -56,16 +56,13 @@ public class Cliente implements Serializable, Entidad {
     @Size(max = 40)
     @Column(name = "hashCliente")
     private String hashCliente;
-    @Size(min = 8, max = 13, message = "Este campo requiere de mínimo 8 caracteres y máximo 14")
-    @Pattern(regexp = "^[0-9]+$", message = "Este campo solo perite valores númericos.")
+    @Pattern(regexp = "^[0-9]{8,}+$", message = "Este campo solo perite valores númericos, mínimo 8.")
     @Column(name = "numero_cedula")
     private String numeroCedula;
-    @Size(min = 2, max = 50, message = "Campo nombre vacío, mínimo 2 caracteres")
-    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Este campo no permite números ni caracteres especiales")
+    @Pattern(regexp = "^[a-zA-Z ]{2,}+$", message = "Este campo no permite números ni caracteres especiales, mínimo 2 caracteres")
     @Column(name = "nombres")
     private String nombres;
-    @Size(min = 2, max = 50, message = "Campo apellido vacío, mínimo 2 caracteres")
-    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Este campo no permite números ni caracteres especiales")
+    @Pattern(regexp = "^[a-zA-Z ]{2,50}+$", message = "Este campo no permite números ni caracteres especiales, mínimo 2 caracteres")
     @Column(name = "apellidos")
     private String apellidos;
     @Size(max = 150)

@@ -6,7 +6,6 @@
 package proyectompc.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,14 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -51,20 +48,18 @@ public class Usuario implements Serializable, Entidad {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
     @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Este campo no permite caracteres especiales.")
     @Column(name = "respuesta_pregunta_secreta")
     private String respuestaPreguntaSecreta;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 60)
-    @Pattern(regexp = "^[a-zA-Z]{9,}+$", message = "Este campo solo permite letras con un mínimo de 9 caracteres.")
+    @Pattern(regexp = "^[a-zA-Z0-9]{9,}+$", message = "Este campo solo permite letras y números con un mínimo de 9 caracteres.")
     @Column(name = "usuario", unique = true)
     private String usuario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 180)
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}+$", message = "Contraseña requerida, mínimo 8 caracteres con un número.")
+    @Size(max = 180, message = "Máximo 180 caracteres")
+    @Pattern(regexp = "^[a-zA-Z0-9]{8,}+$", message = "Contraseña requerida, mínimo 8 entre letras y números.")
     @Column(name = "clave")
     private String clave;
     @Size(max = 40)

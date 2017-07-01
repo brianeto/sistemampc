@@ -105,19 +105,19 @@ public class RegistarClienteControlador implements Serializable {
         int num = 0;
         if (registrarCliente.existeCorreoElectronico(cliente.getCorreoElectronico()) > 0) {
             context.addMessage(
-                    null,
+                    "correoNuevoCliente",
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El correo electrónico ya se encuentra en uso."));
             num++;
         }
         if (registrarCliente.existeUsuario(usuario.getUsuario()) > 0) {
             context.addMessage(
-                    null,
+                    "usuarioClienteRegistro",
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El nombre de usuario ya se encuentra en uso."));
             num++;
         }
         if (registrarCliente.existeNumeroCedula(cliente.getNumeroCedula()) > 0) {
             context.addMessage(
-                    null,
+                    "ncedula",
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El número de cédula ya se encuentra en uso."));
             num++;
         }
@@ -135,7 +135,7 @@ public class RegistarClienteControlador implements Serializable {
             this.setUsuario(new Usuario());
             this.repetirClave = new String();
         }
-        RequestContext.getCurrentInstance().update("formClienteRegistro");
+        RequestContext.getCurrentInstance().update("registroClienteFormulario");
     }
 
 }

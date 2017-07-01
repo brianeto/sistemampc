@@ -25,7 +25,7 @@ public class PasswordValidator implements Validator {
         String campo = (String) component.getAttributes().get("campo");
         UIInput otherValue = (UIInput) context.getViewRoot().findComponent(campo);
         if (!value.equals(otherValue.getValue())) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Contraseñas no coinciden."));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Las contraseñas no coinciden."));
         }
     }
 
