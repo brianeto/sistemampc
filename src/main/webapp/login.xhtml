@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/template/indexTemplate.xhtml">
+
+            <ui:define name="main">
+                <div class="container-fluid">
+                    <div class="col-xs-12" id="formRegistroCliente">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 first-md">
+                                <b:panel class="panel panel-info"
+
+                                         collapsible="false">
+                                    <f:facet name="heading" >
+                                        Iniciar sesión
+                                    </f:facet>
+
+                                    <b:form id="inicioSesionFormulario">
+
+                                        <b:messages showDetail="true" />
+
+                                        <b:formGroup>
+                                            <div style="margin-bottom: 25px" class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                                <b:inputText id="usuarioLogin"
+                                                             placeholder="Usuario"
+                                                             required="true"
+                                                             requiredMessage="Usuario requerido"/>
+
+                                            </div>
+
+                                        </b:formGroup>
+
+                                        <b:formGroup>
+                                            <div style="margin-bottom: 25px" class="input-group">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                <b:inputSecret id="claveLogin"
+                                                               placeholder="Contraseña"
+                                                               required="true"
+                                                               requiredMessage="Contraseña requerida"/>
+
+
+                                            </div>
+                                        </b:formGroup>
+
+                                        <b:formGroup>
+                                            <b:commandButton id="buttonLogin"
+                                                             value="Iniciar Sesion"
+                                                             look="success"
+                                                             update="@form"
+                                                             iconAwesome="sign-in"
+                                                             action="#{iniciarSesionControlador.iniciarSesion()}"/>
+                                        </b:formGroup>
+                                    </b:form>
+                                </b:panel>
+                            </div>
+                            <div class="col-xs-12 col-md-6 first-xs">
+                                <b:panel class="panel panel-info"
+                                         collapsible="false" look="primary">
+                                    <f:facet name="heading" >
+                                        <div style="color:white">
+                                            ¿Perdió su contraseña?
+                                        </div>
+                                    </f:facet>
+                                    <b:form id="formularioOlvideClave">
+
+                                        <b:messages showDetail="true" />
+
+                                        <b:formGroup rendered="#{empty olvideClaveControlador.usuario.usuario}">
+                                            <b:inputText id="nombreUsuario"
+                                                         value="#{olvideClaveControlador.nombreUsuario}"
+                                                         required="true"
+                                                         requiredMessage="Introduzca un usuario válido"
+                                                         label="Usuario"/>
+                                        </b:formGroup>
+                                        <b:formGroup rendered="#{empty olvideClaveControlador.usuario.usuario}">
+                                            <b:commandButton look="success"
+                                                             update="@form"
+                                                             iconAwesome="check"
+                                                             actionListener="#{olvideClaveControlador.asignarUsuario()}"
+                                                             value="Validar usuario"/>
+                                        </b:formGroup>
+                                        <b:formGroup rendered="#{!empty olvideClaveControlador.usuario.usuario and !olvideClaveControlador.valido}">
+                                            <b:inputText id="respuesa"
+                                                         required="true"
+                                                         label="Respuesta a la pregunta: #{olvideClaveControlador.usuario.preguntaSecretaId.pregunta}"
+                                                         requiredMessage="Ingrese la respuesta correcta a la pregunta."
+                                                         value="#{olvideClaveControlador.respuesta}"/>
+                                        </b:formGroup>
+                                        <b:formGroup rendered="#{!empty olvideClaveControlador.usuario.usuario and !olvideClaveControlador.valido}">
+                                            <b:commandButton look="success"
+                                                             update="@form"
+                                                             iconAwesome="check"
+                                                             actionListener="#{olvideClaveControlador.validar()}"
+                                                             value="Validar pregunta secreta"/>
+                                        </b:formGroup>
+                                        <b:formGroup rendered="#{!empty olvideClaveControlador.usuario.usuario and olvideClaveControlador.valido}">
+                                            <b:inputSecret id="claveEs"
+                                                           label="Contraseña"
+                                                           value="#{olvideClaveControlador.clave}"/>
+                                        </b:formGroup>
+                                        <b:formGroup rendered="#{!empty olvideClaveControlador.usuario.usuario and olvideClaveControlador.valido}">
+                                            <b:inputSecret id="cclaveEs"
+                                                           label="Confirmar contraseña"
+                                                           value="#{olvideClaveControlador.repetirClave}">
+                                                <f:validator validatorId="passwordValidator"/>
+                                                <f:attribute name="campo" value="#{component.parent.parent.clientId}:claveEs"/>
+                                            </b:inputSecret>
+                                        </b:formGroup>
+                                        <b:formGroup rendered="#{!empty olvideClaveControlador.usuario.usuario and olvideClaveControlador.valido}">
+                                            <b:commandButton look="success"
+                                                             update="@form"
+                                                             iconAwesome="check"
+                                                             actionListener="#{olvideClaveControlador.cambiarClave()}"
+                                                             value="Cambiar contraseña"/>
+                                        </b:formGroup>
+                                    </b:form>
+                                </b:panel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

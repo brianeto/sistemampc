@@ -5,44 +5,51 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Iniciar sesión</title>
     </h:head>
     <h:body>
-        <b:panel collapsible="false">
-            <f:facet name="heading" >
-                Iniciar sesión
-            </f:facet>
+        <div class="col-xs-12" id="formRegistroCliente">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 first-md">
+                    <b:panel look="primary" 
+                             collapsible="false">
+                        <f:facet name="heading" >
+                            Iniciar sesión
+                        </f:facet>
 
 
-            <b:form id="inicioSesionFormulario">
+                        <b:form id="inicioSesionFormulario">
 
-                <b:messages showDetail="true" showSummary="false" globalOnly="true"/>
+                            <b:messages showDetail="true" showSummary="false" globalOnly="true"/>
 
-                <b:formGroup>
-                    <b:inputText id="usuarioLogin"
-                                 label="Usuario"
-                                 required="true"
-                                 requiredMessage="Usuario requerido"/>
-                    <b:message for="usuarioLogin"/>
-                </b:formGroup>
-                
-                <b:formGroup>
-                    <b:inputSecret id="claveLogin"
-                                 label="Contraseña"
-                                 required="true"
-                                 requiredMessage="clave requerido"/>
-                    <b:message for="claveLogin"/>
-                </b:formGroup>
-                
-                <b:formGroup>
-                    <b:commandButton id="buttonLogin"
-                                     value="Inciar Sesion"
-                                     look="danger"
-                                     update="@form"
-                                     action="#{iniciarSesionControlador.iniciarSesion()}"/>
-                </b:formGroup>
-            </b:form>
-        </b:panel>
+                            <b:formGroup>
+                                <b:inputText id="usuarioLogin"
+                                             label="Usuario"
+                                             required="true"
+                                             requiredMessage="Usuario requerido"/>
+                                <b:message for="usuarioLogin"/>
+                            </b:formGroup>
+
+                            <b:formGroup>
+                                <b:inputSecret id="claveLogin"
+                                               label="Contraseña"
+                                               required="true"
+                                               requiredMessage="Contraseña requerida"/>
+                                <b:message for="claveLogin"/>
+                            </b:formGroup>
+
+                            <b:formGroup>
+                                <b:commandButton id="buttonLogin"
+                                                 value="Iniciar Sesion"
+                                                 look="success"
+                                                 update="@form"
+                                                 action="#{iniciarSesionControlador.iniciarSesion()}"/>
+                            </b:formGroup>
+                        </b:form>
+                    </b:panel>
+                </div>
+            </div>
+        </div>
     </h:body>
 </html>
 
