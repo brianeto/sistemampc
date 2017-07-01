@@ -21,15 +21,6 @@ public class IniciarSesionControlador implements Serializable{
     private String usuario;
     private String contraseña;
     
-    public IniciarSesionControlador() {
-    }
-    
-    @PostConstruct
-    public void IniciarSesion (){
-        usuario = new String();
-        contraseña =  new String();
-    }
-
     public String getUsuario() {
         return usuario;
     }
@@ -45,5 +36,18 @@ public class IniciarSesionControlador implements Serializable{
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-      
+    
+    public IniciarSesionControlador() {
+    }
+    
+    @PostConstruct
+    public void IniciarSesion (){
+        usuario = new String();
+        contraseña =  new String();
+    }
+
+    
+    public String iniciarSesion(){
+        return new String();
+    }
 }

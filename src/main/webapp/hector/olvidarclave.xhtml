@@ -15,7 +15,9 @@
                 </div>
             </f:facet>
             <b:form id="formularioOlvideClave">
+                
                 <b:messages showDetail="true" />
+                
                 <b:formGroup rendered="#{empty olvideClaveControlador.usuario.usuario}">
                     <b:inputText id="nombreUsuario"
                                  value="#{olvideClaveControlador.nombreUsuario}"
