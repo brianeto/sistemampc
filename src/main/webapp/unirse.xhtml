@@ -26,37 +26,35 @@
             <ui:define name="main">
                 <div class="row">
                     <div class="col-xs-12 col-md-5 last-sm">
-                        <b:jumbotron>
-                            <h2>
-                                Tenga en cuenta que...
-                            </h2>
-                            <hr />
-                            <ul style="margin-left: 20px;">
-                                <li>
-                                    <strong>Acceso</strong> <br />
-                                    <ol>
-                                        <li>
-                                            Para acceder a la aplicación es necesario contar con <b>Número de identificación (Número de cédula)</b> ya que este sera su usuario.
-                                        </li>
-                                        <br />
-                                        <li>
-                                            La contraseña <b>se genera automaticamente recuerde anotarla</b> y posteriormente actualizarla desde el perfil.
-                                        </li>
-                                    </ol>
+                        <h2>
+                            Tenga en cuenta que...
+                        </h2>
+                        <hr />
+                        <ul style="margin-left: 20px;">
+                            <li>
+                                <strong>Acceso</strong> <br />
+                                <ol>
+                                    <li>
+                                        Para acceder a la aplicación es necesario contar con <b>Número de identificación (Número de cédula)</b> ya que este sera su usuario.
+                                    </li>
                                     <br />
+                                    <li>
+                                        La contraseña <b>se genera automaticamente recuerde anotarla</b> y posteriormente actualizarla desde el perfil.
+                                    </li>
+                                </ol>
+                                <br />
 
-                                </li>
-                                <li>
-                                    <strong>Registro</strong> <br /><br /> Al registrarse, el usuario va a disponer de un usuario y una contraseña que van a hacer posible que, en el caso de tener problemas con la aplicación, nuestro administrador pueda hacer un seguimiento
-                                    para solucionarlos.
-                                    <br /><br />
-                                </li>
-                                <li>
-                                    <strong>Tareas realizadas</strong> <br /><br /> Por otra parte, el usuario podrá cerrar la sesión e iniciarla de nuevo en el punto en el que se hubiera quedado, ya que el sistema guarda el trabajo realizado.
-                                    <br /><br />
-                                </li>
-                            </ul>
-                        </b:jumbotron>
+                            </li>
+                            <li>
+                                <strong>Registro</strong> <br /><br /> Al registrarse, el usuario va a disponer de un usuario y una contraseña que van a hacer posible que, en el caso de tener problemas con la aplicación, nuestro administrador pueda hacer un seguimiento
+                                para solucionarlos.
+                                <br /><br />
+                            </li>
+                            <li>
+                                <strong>Tareas realizadas</strong> <br /><br /> Por otra parte, el usuario podrá cerrar la sesión e iniciarla de nuevo en el punto en el que se hubiera quedado, ya que el sistema guarda el trabajo realizado.
+                                <br /><br />
+                            </li>
+                        </ul>
                     </div>
                     <div class="col-xs-12 col-md-7" id="clienteDiv">
                         <b:form id="registroClienteFormulario" 
@@ -248,7 +246,7 @@
                                     <b:message for="numeroTelefono"/>
                                 </b:formGroup>
                                 <b:formGroup>
-                                     <h:outputLabel class="control-label" value="Correo electrónico *" for="correoElectronicoContact"/><br />
+                                    <h:outputLabel class="control-label" value="Correo electrónico *" for="correoElectronicoContact"/><br />
                                     <small>Proporcione un correo electrónico válido ya que por este medio recibirá un vinculo por el cual podrá realizar la activación de su cuenta.</small>
                                     <b:inputText id="correoElectronicoContact"
                                                  value="#{registrarEmpresaControlador.contactoEmpresa.correoElectronico}"/>
