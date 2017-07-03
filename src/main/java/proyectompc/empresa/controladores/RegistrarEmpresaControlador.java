@@ -10,25 +10,29 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import proyectompc.empresa.negocio.RegistrarEmpresa;
 import proyectompc.entidades.ContactoEmpresa;
 import proyectompc.entidades.Empresa;
 import proyectompc.entidades.TelefonoEmpresa;
 import proyectompc.entidades.Usuario;
+import proyectompc.facades.EmpresaFacade;
 
 /**
  *
  * @author Andres
  */
 @Named
-@ViewScoped
+@RequestScoped
 public class RegistrarEmpresaControlador implements Serializable{
 
     private static final long serialVersionUID = 12L;
     @EJB
-    private RegistrarEmpresa registrarEmpresa;
+    private EmpresaFacade registrarEmpresa;
     
     private boolean skip;
     private Usuario usuario;
@@ -100,16 +104,33 @@ public class RegistrarEmpresaControlador implements Serializable{
     
     
     public void registrarEmpresa(){
-        registrarEmpresa.registrarEmpresa(usuario, empresa, contactoEmpresa);
+        FacesContext context = FacesContext.getCurrentInstance();
+        int num = 0;
+        if (registrarEmpresa.existeUsuario(usuario.getUsuario()) > 0) {
+            context.addMessage(
+                    "usuarioEmpresa",
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "El nombre de usuario ya se encuentra en uso."));
+            num++;
+        }
+        if (num == 0) {
+            String resultado = registrarEmpresa.registarEmpresa(usuario, empresa, contactoEmpresa);
+            System.out.println(resultado);
+            if (!resultado.isEmpty()) {
+                String[] datos = {contactoEmpresa.getCorreoElectronico(), this.empresa.getRazonSocial(), resultado};
+                if(registrarEmpresa.enviarMensaje(datos)==0){
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Registro exitoso", "El correo proporcionado es incorrecto por favor corregir el panel de contactos."));
+                }else {
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Verifique su correo electrónico para habilitar el ingreso al sistema."));
+                }
+                this.setEmpresa(new Empresa());
+                this.setContactoEmpresa(new ContactoEmpresa());
+                this.setUsuario(new Usuario());
+                this.repetirClave = new String();
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No se pudo realizar la acción."));
+            }
+        }
+        RequestContext.getCurrentInstance().update("empresaFormularioRegistro");
     }
     
-    public String onFlowProcess(FlowEvent event) {
-        if(skip) {
-            skip = false;   //reset in case user goes back
-            return "confirm";
-        }
-        else {
-            return event.getNewStep();
-        }
-    }
 }

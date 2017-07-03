@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -43,17 +44,20 @@ public class ContactoEmpresa implements Serializable, Entidad {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 250)
+    @Size(max = 250)
+    @Pattern(regexp = "^[^0-9]{5,40}+$", message = "Este campo no permite números ni caracteres especiales, mínimo 5 caracteres")
     @Column(name = "nombre_completo")
     private String nombreCompleto;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
+    @Pattern(regexp = "[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]+", message = "Correo electrónico no válido.")
     @Column(name = "correo_electronico")
     private String correoElectronico;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
+    @Pattern(regexp = "[0-9]{7,}+$", message = "Este campo solo perite valores númericos, mínimo 7 caracteres.")
     @Column(name = "numero_telefono")
     private String numeroTelefono;
     @JoinColumn(name = "empresa_id", referencedColumnName = "id")

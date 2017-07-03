@@ -51,8 +51,7 @@ public class Empresa implements Serializable, Entidad {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 2, max = 80, message = "Campo razón social vacío, mínimo 2 caracteres")
-    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Este campo no permite números ni caracteres especiales")
+    @Pattern(regexp = "^[^0-9]{4,40}+$", message = "Este campo no permite valores númericos, mínimo 4 caracteres")
     @Column(name = "razon_social")
     private String razonSocial;
     @NotNull
@@ -61,7 +60,7 @@ public class Empresa implements Serializable, Entidad {
     private String hashEmpresa;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 8, max = 120, message = "Campo dirección vacío, mínimo 2 caracteres")
+    @Size(min = 5, max = 120, message = "Campo dirección vacío, mínimo 5 caracteres")
     @Column(name = "direccion")
     private String direccion;
     @Size(max = 200)
